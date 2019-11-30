@@ -1,6 +1,7 @@
 from web.common.base_page import BaseClass
 from web.common import web_context as context
 from loguru import logger
+import os
 
 
 class WebElement(BaseClass):
@@ -12,6 +13,7 @@ class WebElement(BaseClass):
 
     def get_locator(self):
         try:
+            logger.info(f'Get locator..')
             web_element = context.driver.find_element(self.strategy, self.value)
             return web_element
         except Exception as ex:
@@ -20,6 +22,7 @@ class WebElement(BaseClass):
 
     def click(self):
         try:
+            logger.info(f'Click web element')
             self.get_locator().click()
         except Exception as ex:
             logger.error(f'Failed to click on the web element {0}'.format(ex))
@@ -27,6 +30,7 @@ class WebElement(BaseClass):
 
     def enter_text(self, text=None):
         try:
+            logger.info(f'Enter text to web element')
             self.get_locator().send_keys(text)
         except Exception as ex:
             logger.error(f'Failed to enter text on the web element {0}'.format(ex))
