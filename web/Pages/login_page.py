@@ -18,17 +18,17 @@ class LoginPage(BaseClass):
     def insert_user_name(self, username=None):
         try:
             logger.info(f'Insert the username')
-            self.user_name_input_box.enter_text(self.config_d.get('USERNAME'))
+            self.user_name_input_box.enter_text(username)
         except Exception as ex:
-            logger.error(f'Failed to enter the user name -{0}, {1}'.format(self.config_d.get('USERNAME'), ex))
+            logger.error(f'Failed to enter the user name -{0}, {1}'.format(username, ex))
             raise Exception(ex)
 
     def insert_password(self, password=None):
         try:
             logger.info(f'Insert the password')
-            self.password_input_box.enter_text(self.config_d.get('PASSWORD'))
+            self.password_input_box.enter_text(password)
         except Exception as ex:
-            logger.error(f'Failed to enter the password -{0}, {1}'.format(self.config_d.get('PASSWORD'), ex))
+            logger.error(f'Failed to enter the password -{0}, {1}'.format(password, ex))
             raise Exception(ex)
 
     def click_next_button(self):
@@ -53,8 +53,6 @@ class LoginPage(BaseClass):
             self.click_next_button()
             self.insert_password(password)
             self.submit()
-            self.close_driver()
-            self.quit_driver()
             return True
         except Exception as ex:
             logger.error(f'Failed to login with the given credentials -{0}'.format(ex))

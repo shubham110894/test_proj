@@ -6,3 +6,4 @@ web/common/__pycache__/*
 .venv/
 reports/logs/*
 web/__pycache__/*
+Pipfile.lock

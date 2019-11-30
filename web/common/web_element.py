@@ -1,3 +1,4 @@
+from selenium.webdriver import ActionChains
 from web.common.base_page import BaseClass
 from web.common import web_context as context
 from loguru import logger
@@ -34,4 +35,12 @@ class WebElement(BaseClass):
             self.get_locator().send_keys(text)
         except Exception as ex:
             logger.error(f'Failed to enter text on the web element {0}'.format(ex))
+            raise Exception(ex)
+
+    def hover_on_element(self):
+        try:
+            web_ac = ActionChains(context.driver)
+            return web_ac.move_to_element(self.get_locator()).perform()
+        except Exception as ex:
+            logger.error(f'Failed to hover on the wev element{0}'.format(ex))
             raise Exception(ex)
