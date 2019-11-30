@@ -8,6 +8,7 @@ selenium= "*"
 pytest = "*"
 loguru = "*"
 pyyaml = "*"
+flaky = "*"
 
 [requires]
 python_version = "3.7.4"
