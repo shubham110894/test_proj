@@ -6,16 +6,20 @@ import time
 
 class BaseClass(object):
 
+    driver = None
+
     def __init__(self):
-        self.logger = logging.getLogger()
         pass
 
     def get_driver(self):
         try:
-            driver = webdriver.Chrome("/opt/dexter/chromedriver")
-            driver.maximize_window()
-            driver.implicitly_wait(30)
-            return driver
+            if self.driver is not None:
+                return self.driver
+            else:
+                self.driver = webdriver.Chrome("/Users/rohanpandhare/dev/Ridecell_qa_automation/resources/chromedriver")
+                self.driver.maximize_window()
+                self.driver.implicitly_wait(10)
+                return self.driver
         except Exception as ex:
             raise ex
 
@@ -23,7 +27,7 @@ class BaseClass(object):
         try:
             # logging.debug('BASE_URL ====> ' + str(os.getenv("BASE_URL")))
             self.get_driver().get('https://www.amazon.in')
-            time.sleep(30)
+            time.sleep(15)
         except Exception as ex:
             raise ex
 
@@ -33,7 +37,7 @@ class BaseClass(object):
         else:
             pass
 
-    def quit_drier(self):
+    def quit_driver(self):
         if self.get_driver() is not None:
             self.get_driver().quit()
         else:

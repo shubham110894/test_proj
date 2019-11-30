@@ -1,16 +1,13 @@
 from web.Pages.login_page import LoginPage
-import os
 
 
-class TestLogin(object):
+class TestLogin():
 
     def __init__(self):
-        self.user_name = os.getenv("USER_NAME")
-        self.password = os.getenv("PASSWORD")
         self.login_page = LoginPage()
 
     def test_user_login_with_valid_credentials(self):
-        result = self.login_page.login(self.user_name, self.password)
+        result = self.login_page.login("","")
         assert (result == True)
 
 

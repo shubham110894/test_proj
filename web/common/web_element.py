@@ -5,6 +5,7 @@ import logging
 class WebElement(BaseClass):
 
     def __init__(self, strategy=None, value=None):
+        super(BaseClass,self).__init__()
         self.strategy = strategy
         self.value = value
 
@@ -15,3 +16,9 @@ class WebElement(BaseClass):
             return element
         except Exception as ex:
             raise ex
+
+    def click(self):
+        self.get_locator().click()
+
+    def enter_text(self, text=None):
+        self.get_locator().send_keys(text)

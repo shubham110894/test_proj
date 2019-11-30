@@ -15,13 +15,13 @@ class LoginPage(BaseClass):
         self.submit_button = WebElement(By.ID, "signInSubmit")
 
     def navigate_to_input_box(self):
-        self.navigate_to_input_box().click()
+        self.navigate_to_sign_in.click()
 
     def insert_user_name(self, username = None):
-        self.user_name_input_box.send_keys('8884668455')
+        self.user_name_input_box.enter_text('8884668455')
 
     def insert_password(self, password = None):
-        self.password_input_box.send_keys('Shubham110894')
+        self.password_input_box.enter_text('Shubham110894')
 
     def click_next_button(self):
         self.next_button.click()
@@ -35,4 +35,6 @@ class LoginPage(BaseClass):
         self.click_next_button()
         self.insert_password(password)
         self.submit()
+        self.close_driver()
+        self.quit_driver()
         return True
