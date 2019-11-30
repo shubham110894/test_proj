@@ -7,7 +7,7 @@ import os
 class WebElement(BaseClass):
 
     def __init__(self, strategy=None, value=None):
-        super(BaseClass,self).__init__()
+        super(BaseClass, self).__init__()
         self.strategy = strategy
         self.value = value
 
