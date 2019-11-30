@@ -1,3 +1,5 @@
+import time
+
 from web.Pages.login_page import LoginPage
 
 
@@ -8,7 +10,7 @@ class TestLogin():
 
     def test_user_login_with_valid_credentials(self):
         result = self.login_page.login("","")
-        assert (result == True)
+        assert (result==True)
 
 
 if __name__ == "__main__":

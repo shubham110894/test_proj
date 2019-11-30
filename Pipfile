@@ -6,6 +6,7 @@ verify_ssl = true
 [dev-packages]
 selenium= "*"
 pytest = "*"
+loguru = "*"
 
 [requires]
 python_version = "3.7.4"

@@ -1,0 +1,5 @@
+CONFIG:
+  CHROMEDRIVER: "C:\\Users\\GS-1497\\Desktop\\chromedriver"
+  BASE_URL: "https://www.amazon.in"
+  USERNAME: "8884668455"
+  PASSWORD: "shubham110894"

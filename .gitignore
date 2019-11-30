@@ -1,0 +1,4 @@
+# Ignoring pycache files
+ utilities/__pycache__/*
+ web/Pages/__pycache__/*
+ web/common/__pycache__/*
