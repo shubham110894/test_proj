@@ -1,6 +1,5 @@
-from selenium.webdriver.common import by
 from web.common.base_page import BaseClass
-import logging
+from web.common import web_context as context
 
 class WebElement(BaseClass):
 
@@ -11,9 +10,8 @@ class WebElement(BaseClass):
 
     def get_locator(self):
         try:
-            element = self.get_driver().find_element(self.strategy, self.value)
-            logging.debug('=====>'+ str(element))
-            return element
+            web_element = context.driver.find_element(self.strategy, self.value)
+            return web_element
         except Exception as ex:
             raise ex
 

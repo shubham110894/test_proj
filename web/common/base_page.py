@@ -1,44 +1,31 @@
 from selenium import webdriver
-import os
-import logging
-import time
+from web.common import web_context as context
 
 
 class BaseClass(object):
 
-    driver = None
-
-    def __init__(self):
-        pass
-
     def get_driver(self):
-        try:
-            if self.driver is not None:
-                return self.driver
-            else:
-                self.driver = webdriver.Chrome("/Users/rohanpandhare/dev/Ridecell_qa_automation/resources/chromedriver")
-                self.driver.maximize_window()
-                self.driver.implicitly_wait(10)
-                return self.driver
-        except Exception as ex:
-            raise ex
+        print('**************** DRIVER SETUP ****************')
+        options = webdriver.ChromeOptions()
+        options.add_experimental_option("excludeSwitches", ["ignore-certificate-errors"])
+        context.driver = webdriver.Chrome(executable_path="/Users/rohanpandhare/dev/Ridecell_qa_automation/resources/chromedriver", options=options)
+        print('**************** COMPLETED DRIVER SETUP ****************')
+        return context.driver
 
     def open_browser(self):
         try:
-            # logging.debug('BASE_URL ====> ' + str(os.getenv("BASE_URL")))
-            self.get_driver().get('https://www.amazon.in')
-            time.sleep(15)
+            self.get_driver()
+            print('**************** OPEN BROWSER ****************')
+            context.driver.get('https://www.amazon.in')
         except Exception as ex:
             raise ex
 
     def close_driver(self):
-        if self.get_driver() is not None:
-            self.get_driver().close()
-        else:
-            pass
+        if context.driver is not None:
+            print('**************** CLOSING DRIVER ****************')
+            context.driver.close()
 
     def quit_driver(self):
-        if self.get_driver() is not None:
-            self.get_driver().quit()
-        else:
-            pass
+        if context.driver is not None:
+            print('**************** QUITING SESSION ****************')
+            context.driver.quit()
