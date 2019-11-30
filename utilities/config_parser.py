@@ -10,8 +10,7 @@ class YamlParser(object):
     def parser_module(self):
         try:
             with open(self.config_path) as file:
-                doc = yaml.load(file, Loader=yaml.FullLoader)
-                sort_file = yaml.dump(doc, sort_keys=True)
+                sort_file = yaml.load(file, Loader=yaml.FullLoader)
                 print(sort_file)
                 return sort_file
         except Exception as ex:

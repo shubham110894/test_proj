@@ -9,7 +9,7 @@ class BaseClass(object):
     def get_driver(self):
         logger.info(f'**************** DRIVER SETUP ****************')
         YamlParser_o = YamlParser()
-        self.config_d = YamlParser_o.parser_module()
+        self.config_d = YamlParser_o.parser_module().get('CONFIG')
         options = webdriver.ChromeOptions()
         options.add_experimental_option("excludeSwitches", ["ignore-certificate-errors"])
         context.driver = webdriver.Chrome(executable_path=self.config_d.get('CHROMEDRIVER'), options=options)
@@ -19,6 +19,7 @@ class BaseClass(object):
 
     def open_browser(self):
         try:
+            import pdb;pdb.set_trace()
             self.get_driver()
             logger.info('**************** OPEN BROWSER ****************')
             context.driver.get(self.config_d.get('BASE_URL'))
