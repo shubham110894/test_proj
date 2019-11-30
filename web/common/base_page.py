@@ -19,7 +19,6 @@ class BaseClass(object):
 
     def open_browser(self):
         try:
-            import pdb;pdb.set_trace()
             self.get_driver()
             logger.info('**************** OPEN BROWSER ****************')
             context.driver.get(self.config_d.get('BASE_URL'))
