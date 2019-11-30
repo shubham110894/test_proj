@@ -21,7 +21,7 @@ def take_screenshot():
 def wait_for_element(strategy=None, value=None):
     try:
         logger.info(f'Wait for element until timeout')
-        return WebDriverWait(driver, 10).until(expected_conditions.presence_of_element_located((strategy, value))
+        return WebDriverWait(driver, 10).until(expected_conditions.presence_of_element_located((strategy, value)))
     except Exception as ex:
         logger.error(f'Failed to wait until the element is loaded {0}'.format(ex))
         raise Exception(ex)
