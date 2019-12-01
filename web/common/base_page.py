@@ -8,21 +8,19 @@ class BaseClass(object):
 
     def get_driver(self):
         logger.info(f'**************** DRIVER SETUP ****************')
-        YamlParser_o = YamlParser()
-        self.config_d = YamlParser_o.parser_module().get('CONFIG')
         options = webdriver.ChromeOptions()
         options.add_experimental_option("excludeSwitches", ["ignore-certificate-errors"])
-        context.driver = webdriver.Chrome(executable_path=self.config_d.get('CHROMEDRIVER'), options=options)
+        context.driver = webdriver.Chrome(executable_path=YamlParser.get_property('CHROMEDRIVER'), options=options)
         context.driver.maximize_window()
+        context.driver.implicitly_wait(15)
         logger.info('**************** COMPLETED DRIVER SETUP ****************')
         return context.driver
 
     def open_browser(self):
         try:
-            self.get_driver()
             logger.info('**************** OPEN BROWSER ****************')
-            context.driver.get(self.config_d.get('BASE_URL'))
-            logger.info(f'Navigating to {0} Website'.format(self.config_d.get('BASE_URL')))
+            context.driver.get(YamlParser.get_property('BASE_URL'))
+            logger.info(f'Navigating to {0} Website'.format(YamlParser.get_property('BASE_URL')))
         except Exception as ex:
             logger.error(f'Failed to open browser & navigate to the URL {0}'.format(ex))
             raise Exception(ex)

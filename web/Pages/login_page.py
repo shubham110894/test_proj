@@ -9,7 +9,6 @@ class LoginPage(BaseClass):
 
     def __init__(self):
         super(BaseClass, self).__init__()
-        self.open_browser()
         self.user_name_input_box = WebElement(By.ID , "ap_email")
         self.password_input_box = WebElement(By.ID, "ap_password")
         self.next_button = WebElement(By.ID, "continue")
