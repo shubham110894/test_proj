@@ -2,7 +2,7 @@ from selenium.webdriver import ActionChains
 from web.common.base_page import BaseClass
 from web.common import web_context as context
 from loguru import logger
-from web.common.web_context import take_screenshot
+from web.common.web_context import take_screenshot, wait_for_element
 from utilities.framework_constants import Constants as const
 
 
@@ -47,5 +47,14 @@ class WebElement(BaseClass):
             return web_ac.move_to_element(self.get_locator()).perform()
         except Exception as ex:
             logger.error(f'Failed to hover on the wev element{0}'.format(ex))
+            take_screenshot()
+            raise Exception(ex)
+
+    def element_is_displayed(strategy=None, value=None):
+        try:
+            logger.info(f'Check if the element is displayed')
+            return wait_for_element(strategy, value).is_displayed()
+        except Exception as ex:
+            logger.error(f'Failed to wait until the element is loaded {0}'.format(ex))
             take_screenshot()
             raise Exception(ex)
