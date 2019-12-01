@@ -1,5 +1,6 @@
 # Ignoring pycache files
 utilities/__pycache__/*
+__pycache__/*
 web/Pages/__pycache__/*
 web/common/__pycache__/*
 .idea/
