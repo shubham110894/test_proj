@@ -16,6 +16,7 @@ class LoginPage(BaseClass):
 
     def insert_user_name(self, username=None):
         try:
+            time.sleep(5)
             logger.info(f'Insert the username')
             self.user_name_input_box.enter_text(username)
         except Exception as ex:
@@ -42,6 +43,7 @@ class LoginPage(BaseClass):
         try:
             logger.info(f'Click on Login Button')
             self.submit_button.click()
+            time.sleep(7)
         except Exception as ex:
             logger.error(f'Failed to click on login button -{0}'.format(ex))
             raise Exception(ex)
