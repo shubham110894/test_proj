@@ -3,10 +3,10 @@ import os
 from datetime import datetime
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions
+from utilities.framework_constants import Constants as const
 
 now = datetime.now()
 current_time = now.strftime("%H_%M_%S")
-
 driver = None
 
 
@@ -19,10 +19,10 @@ def take_screenshot(filename="Failed"):
         raise Exception(ex)
 
 
-def wait_for_element(strategy=None, value=None):
+def wait_for_element(strategy=None, value=None, timeout=const.XL):
     try:
         logger.info(f'Wait for element until timeout')
-        return WebDriverWait(driver, 10).until(expected_conditions.presence_of_element_located((strategy, value)))
+        return WebDriverWait(driver, timeout).until(expected_conditions.presence_of_element_located((strategy, value)))
     except Exception as ex:
         logger.error(f'Failed to wait until the element is loaded {0}'.format(ex))
         raise Exception(ex)

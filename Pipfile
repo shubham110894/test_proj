@@ -9,6 +9,7 @@ pytest = "*"
 loguru = "*"
 pyyaml = "*"
 flaky = "*"
+pytest-html = "*"
 
 [requires]
 python_version = "3.7.4"

@@ -1,4 +1,3 @@
-import time
 from loguru import logger
 from selenium.webdriver.common.by import By
 from web.common.base_page import BaseClass

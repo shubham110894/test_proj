@@ -1,5 +1,3 @@
-import time
-from flaky import flaky
 from web.Pages.login_page import LoginPage
 from web.Pages.home_page import HomePage
 from web.common.base_page import BaseClass
@@ -26,14 +24,12 @@ class TestLogin(BaseClass):
     def test_user_login_with_valid_credentials(self):
         self.home_page.navigate_to_input_box()
         self.login_page.login(YamlParser.get_property('USERNAME'), YamlParser.get_property('PASSWORD'))
-        time.sleep(5)
         self.home_page.sign_out_account()
 
     # @flaky(max_runs=3, min_passes=1)
     def test_user_login_with_invalid_credentials(self):
         self.home_page.navigate_to_input_box()
         self.login_page.login(YamlParser.get_property('USERNAME'), YamlParser.get_property('PASSWORD'))
-        time.sleep(5)
         self.home_page.sign_out_account()
 
 # if __name__ == "__main__":

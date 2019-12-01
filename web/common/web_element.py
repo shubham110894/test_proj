@@ -2,7 +2,7 @@ from selenium.webdriver import ActionChains
 from web.common.base_page import BaseClass
 from web.common import web_context as context
 from loguru import logger
-import os
+from utilities.framework_constants import Constants as const
 
 
 class WebElement(BaseClass):
@@ -15,10 +15,10 @@ class WebElement(BaseClass):
     def get_locator(self):
         try:
             logger.info(f'Get locator..')
-            web_element = context.driver.find_element(self.strategy, self.value)
+            web_element = context.wait_for_element(self.strategy, self.value, const.XL)
             return web_element
         except Exception as ex:
-            logger.error(f'Failed to find the locator {0}'.format(ex))
+            logger.error(f'Failed to find the locator ({self.strategy}, {self.value}), Exception : {ex}')
             raise Exception(ex)
 
     def click(self):
