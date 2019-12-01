@@ -11,7 +11,7 @@ class YamlParser(object):
         try:
             with open(cls.config_path) as file:
                 sort_file = yaml.load(file, Loader=yaml.FullLoader)
-                print(sort_file)
+                logger.warning(f"Reading the config file -- " + yaml.dump(sort_file))
                 return sort_file
         except Exception as ex:
             logger.error(f'Unable to load the config yaml {0}'.format(ex))
