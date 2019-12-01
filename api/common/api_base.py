@@ -5,6 +5,7 @@ class ApiBase(object):
 
     def __init__(self):
         self.API_BASE_URL = YamlParser.get_property("API_BASE_URL")
+        print("**********************"+self.API_BASE_URL)
         self.headers = {
-            "Content-Type":"application/json"
+            "Content-Type": "application/json"
         }

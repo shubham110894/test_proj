@@ -2,8 +2,11 @@
 utilities/__pycache__/*
 web/Pages/__pycache__/*
 web/common/__pycache__/*
+api/common/__pycache__/*
+api/api_helpers/__pycache__/*
 .idea/
 .venv/
 reports/logs/*
 web/__pycache__/*
+api/__pycache__/*
 Pipfile.lock*
