@@ -25,7 +25,6 @@ class HomePage(BaseClass):
             self.navigate_to_sign_in.hover_on_element()
             sign_out = WebElement(By.ID, 'nav-item-signout')
             sign_out.click()
-
         except Exception as ex:
             logger.error(f'Failed to navigate to the sign-out account {0}'.format(ex))
             raise Exception(ex)
