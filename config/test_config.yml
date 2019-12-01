@@ -3,3 +3,4 @@ CONFIG:
   BASE_URL: "https://www.amazon.in"
   USERNAME: "8884668455"
   PASSWORD: "shubham110894"
+  API_BASE_URL: "https://restful-booker.herokuapp.com"
